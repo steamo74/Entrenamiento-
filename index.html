@@ -13,7 +13,9 @@ let goals=JSON.parse(localStorage.getItem(GO)||"null")||DEF,weeks=JSON.parse(loc
 const monday=x=>{x=new Date(x);x.setHours(12,0,0,0);x.setDate(x.getDate()-((x.getDay()+6)%7));return x},id=x=>monday(x).toISOString().slice(0,10),current=id(new Date());
 let view=localStorage.getItem(VW)||current;
 const blank=()=>({cardio:{},fuerza:{},core:{}});
-function state(){if(!Array.isArray(weeks[view]))weeks[view]=Array.from({length:7},blank);return weeks[view]}let s=state();const $=id=>document.getElementById(id);\nconst el={pc:$("pc"),pf:$("pf"),sum:$("sum"),wt:$("wt"),wd:$("wd"),today:$("today"),hist:$("hist"),objective:$("objective"),g1l:$("g1l"),g1k:$("g1k"),g2l:$("g2l"),g2k:$("g2k"),tc:$("tc"),tf:$("tf"),tco:$("tco"),st:$("st"),panel:$("panel"),saveg:$("saveg"),reset:$("reset"),prev:$("prev"),next:$("next"),lightbox:$("lightbox"),bigphoto:$("bigphoto"),photoinfo:$("photoinfo"),prevbox:$("prevbox"),nextbox:$("nextbox"),closebox:$("closebox")};\n
+function state(){if(!Array.isArray(weeks[view]))weeks[view]=Array.from({length:7},blank);return weeks[view]}let s=state();const $=id=>document.getElementById(id);
+const el={pc:$("pc"),pf:$("pf"),sum:$("sum"),wt:$("wt"),wd:$("wd"),today:$("today"),hist:$("hist"),objective:$("objective"),g1l:$("g1l"),g1k:$("g1k"),g2l:$("g2l"),g2k:$("g2k"),tc:$("tc"),tf:$("tf"),tco:$("tco"),st:$("st"),panel:$("panel"),saveg:$("saveg"),reset:$("reset"),prev:$("prev"),next:$("next"),lightbox:$("lightbox"),bigphoto:$("bigphoto"),photoinfo:$("photoinfo"),prevbox:$("prevbox"),nextbox:$("nextbox"),closebox:$("closebox")};
+
 function save(){weeks[view]=s;localStorage.setItem(WK,JSON.stringify(weeks));renderHistory()}
 function has(i,t){return Object.values(s[i][t]||{}).some(Boolean)}
 function count(t){return s.filter((x,i)=>has(i,t)).length}
