@@ -9,7 +9,8 @@
 <div class="lightbox" id="lightbox"><button class="closebox" id="closebox">×</button><button class="navbox prevbox" id="prevbox">‹</button><img id="bigphoto"><button class="navbox nextbox" id="nextbox">›</button><div class="photoinfo" id="photoinfo"></div></div>
 <script>
 const GO="entrenamiento-goals",WK="entrenamiento-weeks",VW="entrenamiento-view-week",CO=["Elíptica","Cinta","Correr"],FU=["Pecho","Hombros","Tríceps","Piernas","Espalda","Bíceps"],CR=["Core"],D=["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"],DEF={g1l:"diciembre",g1k:74,g2l:"marzo",g2k:72.5,tc:3,tf:4,tco:2};
-function readJSON(k,f){try{return JSON.parse(localStorage.getItem(k)||"null")??f}catch(e){return f}}\nlet goals=readJSON(GO,DEF),weeks=readJSON(WK,{});
+function readJSON(k,f){try{return JSON.parse(localStorage.getItem(k)||"null")??f}catch(e){return f}}
+let goals=readJSON(GO,DEF),weeks=readJSON(WK,{});
 const monday=x=>{x=new Date(x);x.setHours(12,0,0,0);x.setDate(x.getDate()-((x.getDay()+6)%7));return x},id=x=>monday(x).toISOString().slice(0,10),current=id(new Date());
 let view=localStorage.getItem(VW)||current;
 const blank=()=>({cardio:{},fuerza:{},core:{}});
