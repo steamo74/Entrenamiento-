@@ -1,107 +1,36 @@
-<!doctype html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0878c9">
-<link rel="manifest" href="manifest.json">
-<title>Mi entrenamiento semanal</title>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0878c9"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="manifest" href="manifest.json"><title>Mi entrenamiento semanal</title>
 <style>
-:root{--blue:#0878c9;--navy:#102a56;--light:#eef8ff;--line:#b8dcf5;--green:#159447}
-*{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f7fbff;color:var(--navy)}
-header{background:linear-gradient(135deg,#0878c9,#075da5);color:white;padding:28px 18px 22px;text-align:center;border-radius:0 0 24px 24px}
-h1{font-size:25px;margin:0 0 5px;font-weight:800}.subtitle{font-size:14px;opacity:.95}
-.container{max-width:620px;margin:auto;padding:16px}
-.progress{background:white;border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px;box-shadow:0 3px 12px #0b5c8a12}
-.progressTop{display:flex;justify-content:space-between;font-weight:800}.bar{height:10px;background:#e4eef5;border-radius:8px;margin-top:10px;overflow:hidden}.fill{height:100%;background:#159447;border-radius:8px;width:0%;transition:.25s}
-.day{background:white;border:1px solid var(--line);border-radius:17px;margin:11px 0;overflow:hidden;box-shadow:0 2px 8px #0b5c8a0d}
-.day.done{border-color:#8ed2a9}
-.historyRow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:10px 0;border-bottom:1px solid #e8f0f5;align-items:center;font-size:14px}
-.historyRow:last-child{border-bottom:0}.historyHead{font-weight:800;font-size:12px;color:#698399}
-.historyNum{text-align:center;font-weight:800}.historyDate{font-weight:700}
-.dayhead{display:flex;align-items:center;padding:14px 13px;gap:12px}
-.check{width:31px;height:31px;border-radius:50%;border:2px solid #a7c5d8;background:white;flex:none;font-size:19px;font-weight:800;color:white;display:flex;align-items:center;justify-content:center;cursor:pointer}
-.done .check{background:var(--green);border-color:var(--green)}
-.daytitle{flex:1}.weekday{font-size:16px;font-weight:800}.session{font-size:13px;color:#3d5a73;margin-top:3px}.optional{color:#777}
-.chev{font-size:20px;color:#7290a6;cursor:pointer;padding:5px}.details{display:none;border-top:1px solid #e3eef5;padding:13px 15px 15px;font-size:14px;line-height:1.5;background:#fbfdff}.open .details{display:block}
-.detailTitle{font-weight:800;margin-bottom:5px}.exercise{padding:5px 0;border-bottom:1px solid #edf3f7}.exercise:last-child{border-bottom:0}
-footer{text-align:center;color:#71879a;font-size:12px;padding:20px}
-button.reset{border:0;background:#eef6fb;color:#35617c;padding:10px 15px;border-radius:12px;font-weight:700}
-</style>
-</head>
-<body>
-<header><h1>PLAN SEMANAL · ENTRENAMIENTO</h1><div class="subtitle">Objetivo: diciembre 74,0 kg · marzo 72,5 kg</div></header>
-<main class="container">
-<section class="progress"><div class="progressTop"><span>Semana actual</span><span id="count">0 / 0</span></div><div class="bar"><div class="fill" id="fill"></div></div></section>
+:root{--blue:#0878c9;--navy:#102a56;--line:#b8dcf5;--green:#159447;--purple:#7555b8}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f7fbff;color:var(--navy)}header{background:linear-gradient(135deg,#0878c9,#075da5);color:#fff;padding:26px 18px 22px;text-align:center;border-radius:0 0 24px 24px}h1{font-size:24px;margin:0 0 5px;font-weight:800}.subtitle{font-size:14px}.container{max-width:620px;margin:auto;padding:16px}.progress{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px;box-shadow:0 3px 12px #0b5c8a12}.progressTop{display:flex;justify-content:space-between;font-weight:800}.bar{height:10px;background:#e4eef5;border-radius:8px;margin-top:10px;overflow:hidden}.fill{height:100%;background:var(--green);border-radius:8px;width:0}.day{background:#fff;border:1px solid var(--line);border-radius:17px;margin:11px 0;overflow:hidden;box-shadow:0 2px 8px #0b5c8a0d}.dayhead{display:flex;align-items:center;padding:14px 13px;gap:12px}.daytitle{flex:1}.weekday{font-size:16px;font-weight:800}.session{font-size:13px;color:#3d5a73;margin-top:3px}.chev{font-size:20px;color:#7290a6;cursor:pointer;padding:5px}.sessions{display:flex;gap:7px;flex-wrap:wrap;padding:0 13px 14px}.sessionBtn{border:1px solid #b9cfdf;background:#fff;color:#34556d;border-radius:12px;padding:8px 10px;font-weight:800;font-size:12px;cursor:pointer}.sessionBtn.done{background:var(--green);border-color:var(--green);color:#fff}.sessionBtn.core.done{background:var(--purple);border-color:var(--purple)}.sessionBtn.optional{opacity:.82}.details{display:none;border-top:1px solid #e3eef5;padding:13px 15px 15px;font-size:14px;line-height:1.5;background:#fbfdff}.open .details{display:block}.detailTitle{font-weight:800;margin-bottom:5px}.exercise{padding:5px 0;border-bottom:1px solid #edf3f7}.goals{margin-bottom:14px}.goalToggle{width:100%;border:0;background:#eef6fb;color:#315c78;padding:11px 13px;border-radius:12px;font-weight:800;text-align:left}.goalPanel{display:none;background:#fff;border:1px solid var(--line);border-radius:14px;margin-top:8px;padding:13px}.goalPanel.open{display:block}.goalGrid{display:grid;grid-template-columns:1fr 100px;gap:8px;margin:7px 0 12px}.goalGrid input,.targetBox input{width:100%;border:1px solid #b9cfdf;border-radius:9px;padding:9px;font:inherit}.targets{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.targetBox{background:#f8fbfd;border:1px solid #d8e7f0;border-radius:11px;padding:9px}.targetBox label{display:block;font-size:11px;color:#698399;font-weight:800;margin-bottom:5px}.saveGoals{border:0;background:var(--blue);color:#fff;padding:9px 13px;border-radius:10px;font-weight:800}.historyRow{display:grid;grid-template-columns:1.15fr repeat(3,1fr);gap:7px;padding:10px 0;border-bottom:1px solid #e8f0f5;align-items:center;font-size:13px}.historyHead{font-weight:800;font-size:11px;color:#698399}.historyNum{text-align:center;font-weight:800}.historyDate{font-weight:700}.legend{font-size:11px;color:#71879a;margin-top:8px}footer{text-align:center;color:#71879a;font-size:12px;padding:20px}.reset{border:0;background:#eef6fb;color:#35617c;padding:10px 15px;border-radius:12px;font-weight:700}
+</style></head><body>
+<header><h1>PLAN SEMANAL · ENTRENAMIENTO</h1><div class="subtitle" id="objectiveText"></div></header><main class="container">
+<section class="progress"><div class="progressTop"><span>Semana actual</span><span id="count"></span></div><div class="bar"><div class="fill" id="fill"></div></div><div class="legend" id="weeklySummary"></div></section>
+<section class="goals"><button class="goalToggle" id="goalToggle">⚙️ Objetivos y frecuencia semanal</button><div class="goalPanel" id="goalPanel">
+<b>Objetivos de peso</b><div class="goalGrid"><input id="goal1Label" placeholder="Ej.: diciembre"><input id="goal1Kg" type="number" step=".1" placeholder="kg"></div><div class="goalGrid"><input id="goal2Label" placeholder="Ej.: marzo"><input id="goal2Kg" type="number" step=".1" placeholder="kg"></div>
+<b>Objetivo semanal de sesiones</b><div class="targets"><div class="targetBox"><label>Cardio</label><input id="targetCardio" type="number" min="0" max="7"></div><div class="targetBox"><label>Fuerza</label><input id="targetFuerza" type="number" min="0" max="7"></div><div class="targetBox"><label>Core</label><input id="targetCore" type="number" min="0" max="7"></div></div><br><button class="saveGoals" id="saveGoals">Guardar objetivos</button></div></section>
 <div id="days"></div>
-
-<section class="progress" style="margin-top:16px">
-  <div class="progressTop"><span>Historial semanal</span><span>Cardio · Fuerza</span></div>
-  <div id="history"></div>
-</section>
-<footer><button class="reset" onclick="resetWeek()">Reiniciar semana</button><br><br>Los checks se guardan automáticamente en este iPhone.</footer>
-</main>
+<section class="progress"><div class="progressTop"><span>Historial semanal</span><span>Cardio · Fuerza · Core</span></div><div id="history"></div></section>
+<footer><button class="reset" onclick="resetWeek()">Reiniciar semana</button><br><br>Los checks se guardan automáticamente en este iPhone.</footer></main>
 <script>
+const defaultGoals={goal1Label:"diciembre",goal1Kg:74,goal2Label:"marzo",goal2Kg:72.5,targetCardio:3,targetFuerza:4,targetCore:2},goalsKey="entrenamiento-goals",weeksKey="entrenamiento-weeks";
+let goals=JSON.parse(localStorage.getItem(goalsKey)||"null")||defaultGoals;
 const plan=[
-["Lunes","Elíptica 40 min","Día A","FC media 115–125 ppm · Pecho + hombros + tríceps · 55–65 min",[
-"Press pecho 3×8–12","Press inclinado 3×8–12","Press hombro 3×8–12","Elevaciones laterales 3×12–15","Tríceps polea 3×10–12","Extensión tríceps 2–3×10–12"]],
-["Martes","—","Día B","Piernas + espalda + bíceps · 65–70 min",[
-"Prensa 3–4×8–10","Sentadilla guiada o búlgara 3×8–10","Curl femoral 3×10–12","Gemelos 3×12–15","Jalón al pecho 3×8–12","Remo sentado 3×8–12","Curl bíceps 3×10–12","Curl martillo 3×10–12"]],
-["Miércoles","Elíptica con intervalos 40 min","Descanso","8 min suave + 6 bloques (2 min fuerte 135–145 ppm + 3 min suave) + 5 min suave",[]],
-["Jueves","—","Día A","Pecho + hombros + tríceps · 55–65 min",[
-"Press pecho 3×8–12","Press inclinado 3×8–12","Press hombro 3×8–12","Elevaciones laterales 3×12–15","Tríceps polea 3×10–12","Extensión tríceps 2–3×10–12"]],
-["Viernes","Elíptica 40 min","Día B","FC media 115–125 ppm · Piernas + espalda + bíceps · 65–70 min",[
-"Prensa 3–4×8–10","Sentadilla guiada o búlgara 3×8–10","Curl femoral 3×10–12","Gemelos 3×12–15","Jalón al pecho 3×8–12","Remo sentado 3×8–12","Curl bíceps 3×10–12","Curl martillo 3×10–12"]],
-["Sábado","Elíptica suave opcional 35–40 min","Fuerza opcional","Brazos + hombro + core · 30–40 min",[]],
-["Domingo","Paseo o descanso","Fuerza opcional","Core + estabilidad + movilidad · 25–35 min",[]]
-];
-const key="entrenamiento-week-"+new Date().toISOString().slice(0,10);
-let state=JSON.parse(localStorage.getItem(key)||"{}");
-const required=[0,1,2,3,4];
-function render(){
- const days=document.getElementById("days"); days.innerHTML="";
- plan.forEach((d,i)=>{
-  const done=!!state[i];
-  const card=document.createElement("section"); card.className="day "+(done?"done ":"")+"";
-  const exercises=d[4].map(x=>`<div class="exercise">${x}</div>`).join("");
-  card.innerHTML=`<div class="dayhead">
-   <button class="check" aria-label="Marcar ${d[0]}">${done?"✓":""}</button>
-   <div class="daytitle"><div class="weekday">${d[0]}</div><div class="session">${d[1]} · <b>${d[2]}</b></div></div>
-   <div class="chev">›</div>
-  </div>
-  <div class="details"><div class="detailTitle">${d[3]}</div>${exercises}</div>`;
-  card.querySelector(".check").onclick=()=>{state[i]=!state[i];save();render()};
-  card.querySelector(".chev").onclick=()=>card.classList.toggle("open");
-  card.querySelector(".dayhead").ondblclick=()=>card.classList.toggle("open");
-  days.appendChild(card);
- });
- const n=required.filter(i=>state[i]).length; document.getElementById("count").textContent=`${n} / ${required.length}`;
- document.getElementById("fill").style.width=(n/required.length*100)+"%";
-}
-function save(){localStorage.setItem(key,JSON.stringify(state)); saveHistory();}
-function saveHistory(){
- const weekKey="entrenamiento-history";
- let h=JSON.parse(localStorage.getItem(weekKey)||"{}");
- const now=new Date(), monday=new Date(now); monday.setDate(now.getDate()-((now.getDay()+6)%7));
- const id=monday.toISOString().slice(0,10);
- h[id]={cardio:[0,2,4,5].filter(i=>state[i]).length, fuerza:[0,1,3,4,5,6].filter(i=>state[i]).length};
- localStorage.setItem(weekKey,JSON.stringify(h));
-}
-function renderHistory(){
- const box=document.getElementById("history"); if(!box)return;
- let h=JSON.parse(localStorage.getItem("entrenamiento-history")||"{}");
- const dates=Object.keys(h).sort().reverse().slice(0,8);
- let out=`<div class="historyRow historyHead"><div>Semana</div><div class="historyNum">Cardio</div><div class="historyNum">Fuerza</div></div>`;
- dates.forEach(id=>{
-   const d=new Date(id+"T12:00:00"), end=new Date(d); end.setDate(d.getDate()+6);
-   const label=d.toLocaleDateString("es-ES",{day:"2-digit",month:"2-digit"})+" – "+end.toLocaleDateString("es-ES",{day:"2-digit",month:"2-digit"});
-   out+=`<div class="historyRow"><div class="historyDate">${label}</div><div class="historyNum">${h[id].cardio}</div><div class="historyNum">${h[id].fuerza}</div></div>`;
- });
- box.innerHTML=out;
-}
-function resetWeek(){if(confirm("¿Reiniciar todos los checks de esta semana?")){state={};save();render()}}
-const oldRender=render;
-render=function(){oldRender();renderHistory()};
-render();
-</script>
-</body></html>
+{day:"Lunes",details:"FC media 115–125 ppm · Pecho + hombros + tríceps · 55–65 min",ex:["Press pecho 3×8–12","Press inclinado 3×8–12","Press hombro 3×8–12","Elevaciones laterales 3×12–15","Tríceps polea 3×10–12","Extensión tríceps 2–3×10–12"],s:[["cardio","Elíptica 40 min",0],["fuerza","Día A",0]]},
+{day:"Martes",details:"Piernas + espalda + bíceps · 65–70 min",ex:["Prensa 3–4×8–10","Sentadilla guiada o búlgara 3×8–10","Curl femoral 3×10–12","Gemelos 3×12–15","Jalón al pecho 3×8–12","Remo sentado 3×8–12","Curl bíceps 3×10–12","Curl martillo 3×10–12"],s:[["fuerza","Día B",0]]},
+{day:"Miércoles",details:"8 min suave + 6 bloques (2 min fuerte 135–145 ppm + 3 min suave) + 5 min suave",ex:[],s:[["cardio","Elíptica con intervalos 40 min",0]]},
+{day:"Jueves",details:"Pecho + hombros + tríceps · 55–65 min",ex:["Press pecho 3×8–12","Press inclinado 3×8–12","Press hombro 3×8–12","Elevaciones laterales 3×12–15","Tríceps polea 3×10–12","Extensión tríceps 2–3×10–12"],s:[["fuerza","Día A",0]]},
+{day:"Viernes",details:"FC media 115–125 ppm · Piernas + espalda + bíceps · 65–70 min",ex:["Prensa 3–4×8–10","Sentadilla guiada o búlgara 3×8–10","Curl femoral 3×10–12","Gemelos 3×12–15","Jalón al pecho 3×8–12","Remo sentado 3×8–12","Curl bíceps 3×10–12","Curl martillo 3×10–12"],s:[["cardio","Elíptica 40 min",0],["fuerza","Día B",0]]},
+{day:"Sábado",details:"Sesión opcional: brazos + hombro. El Core se registra por separado.",ex:[],s:[["cardio","Elíptica suave 35–40 min",1],["fuerza","Brazos + hombro",1],["core","Core",1]]},
+{day:"Domingo",details:"Core + estabilidad + movilidad · 25–35 min",ex:[],s:[["core","Core + estabilidad + movilidad",1]]}];
+function monday(){let d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7));return d.toISOString().slice(0,10)}
+const weekId=monday();let weeks=JSON.parse(localStorage.getItem(weeksKey)||"{}"),state=weeks[weekId]||{cardio:{},fuerza:{},core:{}};
+function save(){weeks[weekId]=state;localStorage.setItem(weeksKey,JSON.stringify(weeks));renderHistory()}
+function cnt(t){return Object.values(state[t]).filter(Boolean).length}
+function toggle(t,i){state[t][i]=!state[t][i];save();render()}
+function render(){const box=document.getElementById("days");box.innerHTML="";plan.forEach((d,i)=>{let card=document.createElement("section");card.className="day";let buttons=d.s.map(x=>'<button class="sessionBtn '+x[0]+' '+(state[x[0]][i]?"done ":"")+(x[2]?"optional":"")+'" data-t="'+x[0]+'" data-i="'+i+'">'+(state[x[0]][i]?"✓ ":"")+x[1]+(x[2]?" · opcional":"")+"</button>").join(""),ex=d.ex.map(x=>'<div class="exercise">'+x+"</div>").join("");card.innerHTML='<div class="dayhead"><div class="daytitle"><div class="weekday">'+d.day+'</div><div class="session">'+d.s.map(x=>x[1]).join(" · ")+'</div></div><div class="chev">›</div></div><div class="sessions">'+buttons+'</div><div class="details"><div class="detailTitle">'+d.details+"</div>"+ex+"</div>";card.querySelectorAll(".sessionBtn").forEach(b=>b.onclick=()=>toggle(b.dataset.t,+b.dataset.i));card.querySelector(".chev").onclick=()=>card.classList.toggle("open");box.appendChild(card)});let req=plan.flatMap((d,i)=>d.s.filter(x=>!x[2]).map(x=>[x[0],i])),done=req.filter(x=>state[x[0]][x[1]]).length;document.getElementById("count").textContent=done+" / "+req.length;document.getElementById("fill").style.width=done/req.length*100+"%";document.getElementById("weeklySummary").textContent="Cardio "+cnt("cardio")+"/"+goals.targetCardio+" · Fuerza "+cnt("fuerza")+"/"+goals.targetFuerza+" · Core "+cnt("core")+"/"+goals.targetCore}
+function goalsUI(){["goal1Label","goal1Kg","goal2Label","goal2Kg","targetCardio","targetFuerza","targetCore"].forEach(id=>document.getElementById(id).value=goals[id]);document.getElementById("objectiveText").textContent="Objetivo: "+goals.goal1Label+" "+Number(goals.goal1Kg).toFixed(1).replace(".",",")+" kg · "+goals.goal2Label+" "+Number(goals.goal2Kg).toFixed(1).replace(".",",")+" kg"}
+goalToggle.onclick=()=>goalPanel.classList.toggle("open");
+saveGoals.onclick=()=>{goals={goal1Label:goal1Label.value||"Objetivo 1",goal1Kg:+goal1Kg.value||0,goal2Label:goal2Label.value||"Objetivo 2",goal2Kg:+goal2Kg.value||0,targetCardio:+targetCardio.value||0,targetFuerza:+targetFuerza.value||0,targetCore:+targetCore.value||0};localStorage.setItem(goalsKey,JSON.stringify(goals));goalsUI();render();goalPanel.classList.remove("open")}
+function renderHistory(){let h=JSON.parse(localStorage.getItem(weeksKey)||"{}"),dates=Object.keys(h).sort().reverse().slice(0,8),out='<div class="historyRow historyHead"><div>Semana</div><div class="historyNum">Cardio</div><div class="historyNum">Fuerza</div><div class="historyNum">Core</div></div>';dates.forEach(id=>{let d=new Date(id+"T12:00:00"),e=new Date(d);e.setDate(d.getDate()+6),w=h[id]||{};out+='<div class="historyRow"><div class="historyDate">'+d.toLocaleDateString("es-ES",{day:"2-digit",month:"2-digit"})+" – "+e.toLocaleDateString("es-ES",{day:"2-digit",month:"2-digit"})+'</div><div class="historyNum">'+Object.values(w.cardio||{}).filter(Boolean).length+'</div><div class="historyNum">'+Object.values(w.fuerza||{}).filter(Boolean).length+'</div><div class="historyNum">'+Object.values(w.core||{}).filter(Boolean).length+'</div></div>'});history.innerHTML=dates.length?out:'<div class="legend">Todavía no hay semanas registradas.</div>'}
+function resetWeek(){if(confirm("¿Reiniciar todos los checks de esta semana?")){state={cardio:{},fuerza:{},core:{}};save();render()}}
+goalsUI();render();renderHistory();if("serviceWorker"in navigator)addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+</script></body></html>
